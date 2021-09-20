@@ -126,6 +126,10 @@ func (a *actuator) Reconcile(ctx context.Context, ex *extensionsv1alpha1.Extensi
 	if err != nil {
 		return err
 	}
+	ownerName, ownerID, err := controller.GetOwnerNameAndID(ctx, a.Client(), ex.Namespace, cluster.Shoot.Name)
+	if err != nil {
+		return err
+	}
 
 	dnsConfig, err := a.extractDNSConfig(ex)
 	if err != nil {
