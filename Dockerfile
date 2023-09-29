@@ -12,7 +12,6 @@ FROM gcr.io/distroless/static-debian11:nonroot AS base
 FROM base AS gardener-extension-shoot-dns-service
 WORKDIR /
 
-COPY charts /charts
 COPY --from=builder /go/bin/gardener-extension-shoot-dns-service /gardener-extension-shoot-dns-service
 ENTRYPOINT ["/gardener-extension-shoot-dns-service"]
 
